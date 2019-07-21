@@ -1,11 +1,12 @@
 package testExam
 
 import (
+	"errors"
 	"math"
 	"time"
 )
 
-func PsudoEncrypt() int32 {
+func PsudoEncrypt(base int64) (int64, error) {
 	value := int32(time.Now().UnixNano())
 	value = (value ^ value>>31) - (value>> 31)
 	l1 := value >> 16 & 0xffff
@@ -19,5 +20,10 @@ func PsudoEncrypt() int32 {
 		r1 = r2
 	}
 
-	return (r1<<16)+l1
+	num := int64((r1<<16)+l1)
+	if (base >> 2) < num {
+		return -1, errors.New("base num is too small to create a random num")
+	} else {
+		return base+num, nil
+	}
 }
