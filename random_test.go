@@ -54,3 +54,8 @@ func Test_RondomNumIsFixedLength(t *testing.T) {
 		So(isFixedLength, ShouldBeFalse)
 	})
 }
+
+//func TestGengeratUserNameWithInfo(t *testing.T) {
+//	id, _ := GengeratUserNameWithInfo(AD_HIGH, INFO_VIP, LOC_BEIJING, 0x800000000000)
+//	fmt.Printf("%+v", id)
+//}
